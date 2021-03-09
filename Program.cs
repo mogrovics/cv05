@@ -10,6 +10,19 @@ namespace cv05
     {
         static void Main(string[] args)
         {
+            Car car = new Car(30, Vehicle.FuelType.Gasoline);
+            Console.WriteLine("{0}:\n" + car, nameof(car));
+
+            car.Passengers = 6;
+            Console.WriteLine("{0}:\n" + car, nameof(car));
+
+            Lorry lorry = new Lorry(400, Vehicle.FuelType.Diesel);
+            Console.WriteLine("{0}:\n" + lorry, nameof(lorry));
+
+            car.Refuel(Vehicle.FuelType.Gasoline, 2);
+            Console.WriteLine("{0}:\n" + car, nameof(car));
+
+            Console.ReadLine();
         }
     }
 }
