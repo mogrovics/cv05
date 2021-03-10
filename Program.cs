@@ -19,9 +19,14 @@ namespace cv05
             Lorry lorry = new Lorry(400, Vehicle.FuelType.Diesel);
             Console.WriteLine("{0}:\n" + lorry, nameof(lorry));
 
-            car.Refuel(Vehicle.FuelType.Gasoline, 2);
+            car.Refuel(Vehicle.FuelType.Gasoline, 50);
             Console.WriteLine("{0}:\n" + car, nameof(car));
 
+            car.RadioStatus(false);
+            car.AddStation(1, 99.6);
+            car.RadioSettings(1);
+            Console.WriteLine(car.radioToString());
+            
             Console.ReadLine();
         }
     }
