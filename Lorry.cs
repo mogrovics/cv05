@@ -13,14 +13,16 @@ namespace cv05
         // current load capacity
         private double load;
 
+        // constructor
         public Lorry(double fuelAmount, FuelType fuelType)
             :base(fuelAmount, fuelType)
         {
-            this.load = 0;
+            this.load = 0; // lorry is "empty" by default
             this.maxLoad = 25;
-            this.tankSize = 900;
+            this.TankSize = 900;
         }
 
+        // getters and setters for max load capacity and current load capacity
         public double MaxLoad
         {
             get { return maxLoad; }
@@ -32,12 +34,13 @@ namespace cv05
             get { return load; }
             set 
             {
-                if (value <= maxLoad)
+                // check if load value is within max load limit
+                if (value <= MaxLoad)
                 {
                     load = value;
                 }
 
-                else
+                else // throw exception with info about max possible load size
                 {
                     try
                     {
@@ -47,7 +50,7 @@ namespace cv05
                     {
 
                         load = maxLoad;
-                        Console.WriteLine("Load {0} is too high. Max load: {1}", value, maxLoad);
+                        Console.WriteLine("Load {0} tonnes is too high. Max load: {1} tonnes.\n", value, MaxLoad);
                     }
                 }
                
@@ -58,11 +61,15 @@ namespace cv05
         {
             if (load == 1)
             {
-                return String.Format($" Load: {load} tonne, Max load: {maxLoad} tonnes, Fuel amount: {fuelAmount} l, Fuel: {fuel}");
+                return String.Format($"-------------------------------------------------------------------------------------------------------------\n" +
+                                     $" Load: {Load} tonne, Max load: {MaxLoad} tonnes, Fuel amount: {FuelAmount} l, Fuel: {FuelUsed}\n" +
+                                     $"-------------------------------------------------------------------------------------------------------------\n");
             }
             else
             {
-                return String.Format($" Load: {load} tonnes, Max load: {maxLoad} tonnes, Fuel amount: {fuelAmount} l, Fuel: {fuel}");
+                return String.Format($"-------------------------------------------------------------------------------------------------------------\n" +
+                                     $" Load: {Load} tonnes, Max load: {MaxLoad} tonnes, Fuel amount: {FuelAmount} l, Fuel: {FuelUsed}\n" +
+                                     $"-------------------------------------------------------------------------------------------------------------\n");
             }
         }
     }

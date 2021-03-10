@@ -13,19 +13,21 @@ namespace cv05
         // current number of passengers
         private int passengers;
 
+        // constructor
         public Car(double fuelAmount, FuelType fuelType)
             :base(fuelAmount, fuelType)
         {
-            this.passengers = 0;
+            this.passengers = 0; // given car has zero passengers by default
             this.maxPassengers = 5;
-            this.tankSize = 45;
+            this.TankSize = 45;
 
         }
 
+        // getters and setters for max number of passengers and current number of passengers
         public int MaxPassengers
         {
             get { return maxPassengers; }
-            protected set { maxPassengers = value; }
+            private set { maxPassengers = value; }
         }
 
         public int Passengers
@@ -46,7 +48,7 @@ namespace cv05
                     catch (Exception)
                     {
                         passengers = maxPassengers;
-                        Console.WriteLine("Vehicle capacity does not support this number of passengers: {0}", value);
+                        Console.WriteLine("Vehicle capacity does not support this number of passengers: {0}\n", value);
                     }
                 }
             }
@@ -54,7 +56,9 @@ namespace cv05
 
         public override string ToString()
         {
-            return String.Format($" Passengers: {passengers}, Max passengers: {maxPassengers} Fuel amount: {fuelAmount} l, Fuel: {fuel}");
+            return String.Format($"-------------------------------------------------------------------------------------------------------------\n" +
+                                 $" Passengers: {Passengers}, Max passengers: {MaxPassengers}, Fuel amount: {FuelAmount} l, Fuel: {FuelUsed}\n" +
+                                 $"-------------------------------------------------------------------------------------------------------------\n");
         }
     }
 }

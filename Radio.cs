@@ -10,12 +10,14 @@ namespace cv05
     {
         private double frequency;
         private bool status;
+        // dictionary in which the radio selection and frequency are stored
         private Dictionary<int, double> radioStation = new Dictionary<int, double>();
 
+        // getters and setters for radio frequency and status
         public double Frequency
         {
             get { return frequency; }
-            set { frequency = value; }
+            protected set { frequency = value; }
         }
 
         public bool Status
@@ -24,17 +26,21 @@ namespace cv05
             set { status = value; }
         }
 
+        // method to add new radio stations to radio memory using selection number and frequency
         public void AddRadioStations(int station, double frequency)
         { 
             radioStation.Add(station, frequency);
         }
 
+        // method to set radio to a particular station
         public void RadioSettings(int station)
         {
+            // checks if desired selection is in memory and if the radio is on
             if (radioStation.ContainsKey(station) && status)
             {
                 Frequency = radioStation[station];
             }
+            // check if radio is off
             else if (!status)
             {
                 try
@@ -43,7 +49,7 @@ namespace cv05
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Radio is turned off.");
+                    Console.WriteLine("Radio is turned off.\n");
                 }
             }
         }

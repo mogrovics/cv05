@@ -10,22 +10,30 @@ namespace cv05
     {
         static void Main(string[] args)
         {
+            // init of car
             Car car = new Car(30, Vehicle.FuelType.Gasoline);
             Console.WriteLine("{0}:\n" + car, nameof(car));
 
-            car.Passengers = 6;
+            car.Passengers = 6; // added 6 passengers, max capacity is 5
             Console.WriteLine("{0}:\n" + car, nameof(car));
 
+            // init of lorry
             Lorry lorry = new Lorry(400, Vehicle.FuelType.Diesel);
             Console.WriteLine("{0}:\n" + lorry, nameof(lorry));
 
+            // refuel car with 50 l of gasoline, tank capacity is 45
             car.Refuel(Vehicle.FuelType.Gasoline, 50);
             Console.WriteLine("{0}:\n" + car, nameof(car));
 
-            car.RadioStatus(false);
+            // car radio
+            car.RadioStatus(true);
             car.AddStation(1, 99.6);
             car.RadioSettings(1);
             Console.WriteLine(car.radioToString());
+
+            // lorry radio
+            lorry.RadioStatus(true);
+            Console.WriteLine(lorry.radioToString());
             
             Console.ReadLine();
         }
